@@ -60,8 +60,11 @@ class QueryLog(models.Model):
         related_name="query_logs"
     )
 
-    search_term = models.CharField(max_length=255)
+    question = models.TextField()
 
-    results_count = models.IntegerField()
+    response = models.TextField()
 
-    queried_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.question[:80]
